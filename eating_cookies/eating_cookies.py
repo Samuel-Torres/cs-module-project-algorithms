@@ -2,13 +2,27 @@
 Input: an integer
 Returns: an integer
 '''
-def eating_cookies(n):
-    # Your code here
 
-    pass
+
+def eat_cookies(current, desired):
+
+    if desired == 0:
+        return 1
+    elif current > desired:
+        return 0
+    elif current == desired:
+        return 1
+    elif current < desired:
+        return eat_cookies(current + 1, desired) + eat_cookies(current + 2, desired) + eat_cookies(current + 3, desired)
+
+
+def eating_cookies(n):
+    return eat_cookies(0, n)
+
 
 if __name__ == "__main__":
     # Use the main function here to test out your implementation
     num_cookies = 5
 
-    print(f"There are {eating_cookies(num_cookies)} ways for Cookie Monster to each {num_cookies} cookies")
+    print(
+        f"There are {eating_cookies(num_cookies)} ways for Cookie Monster to each {num_cookies} cookies")
